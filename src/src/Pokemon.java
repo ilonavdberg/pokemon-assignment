@@ -93,10 +93,10 @@ public abstract class Pokemon {
 
     public void eats(String food) {
         if (this.food.equals(food.toLowerCase())) {
-            System.out.println("Yummmy!");
+            speaks();
             heal();
         } else {
-            System.out.println("Blegh...");
+            System.out.println(name + " does not want to eat this... ");
         }
     }
 

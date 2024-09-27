@@ -1,5 +1,5 @@
 public class Bulbasaur extends Pokemon {
-    private String sound = "Squirtle!!!";
+    private String sound = "Bulba... Bulba.. Saur... Saur..";
 
     public Bulbasaur() {
         super("Bulbasaur", PokeType.GRASS, 12, "insect");
