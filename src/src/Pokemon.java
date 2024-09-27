@@ -114,6 +114,6 @@ public abstract class Pokemon {
 
     public void setHpMax(int hpMax) {
         this.hpMax = hpMax + statIncrease();
-        this.hp = hpMax;
+        this.hp = this.hpMax;
     }
 }

@@ -1,5 +1,6 @@
 public class Pikachu extends Pokemon {
-    String sound = "Pika.. Pika...";
+    private String sound = "Pika.. Pika...";
+    private String type = "electric";
 
     public Pikachu() {
         super("Pikachu",13, "ketchup");
@@ -7,6 +8,14 @@ public class Pikachu extends Pokemon {
         this.setAttack(9);
         this.setDefense(8);
         this.setHpMax(13);
+    }
+
+    public void thunderPunch() {
+        System.out.println("Thunder Punch");
+    }
+
+    public void electroBall() {
+        System.out.println("Electro Ball");
     }
 
     @Override

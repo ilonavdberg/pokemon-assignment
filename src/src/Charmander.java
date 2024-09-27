@@ -1,5 +1,6 @@
 public class Charmander extends Pokemon {
-    String sound = "Char... Char... Charmander!!";
+    private String sound = "Char... Char... Charmander!!";
+    private String type = "fire";
 
     public Charmander() {
         super("Charmander",12, "berry");
@@ -7,6 +8,14 @@ public class Charmander extends Pokemon {
         this.setAttack(10);
         this.setDefense(8);
         this.setHpMax(10);
+    }
+
+    public void inferno() {
+        System.out.println("Inferno");
+    }
+
+    public void pyroBall() {
+        System.out.println("Pyro Ball");
     }
 
     @Override

@@ -1,5 +1,6 @@
 public class Bulbasaur extends Pokemon {
-    String sound = "Squirtle!!!";
+    private String type = "grass";
+    private String sound = "Squirtle!!!";
 
     public Bulbasaur() {
         super("Bulbasaur",12, "insect");
@@ -7,6 +8,14 @@ public class Bulbasaur extends Pokemon {
         this.setAttack(9);
         this.setDefense(11);
         this.setHpMax(8);
+    }
+
+    public void leechSeed() {
+        System.out.println("Leech Seed");
+    }
+
+    public void leafStorm() {
+        System.out.println("Leaf Storm");
     }
 
     @Override

@@ -1,5 +1,6 @@
 public class Squirtle extends Pokemon {
-    String sound = "Squirtle!!!";
+    private String sound = "Squirtle!!!";
+    private String type = "water";
 
     public Squirtle() {
         super("Squirtle",12, "fish");
@@ -7,6 +8,14 @@ public class Squirtle extends Pokemon {
         this.setAttack(8);
         this.setDefense(11);
         this.setHpMax(10);
+    }
+
+    public void hydroPump() {
+        System.out.println("Hydro Pump");
+    }
+
+    public void hydroCanon() {
+        System.out.println("Hydro Canon");
     }
 
     @Override
