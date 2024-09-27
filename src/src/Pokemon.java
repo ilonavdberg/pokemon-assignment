@@ -52,29 +52,32 @@ public abstract class Pokemon {
     }
 
     private void increaseXP(Pokemon opponent) {
-        int xp;
+        int xpIncrease;
         // if won
         if (this.hp > 0) {
-            xp = (Math.max(opponent.level - this.level, 0) + this.level) * 15;
+            xpIncrease = (Math.max(opponent.level - this.level, 0) + this.level) * 15;
         } else {
-            xp = this.level * 10;
+            xpIncrease = this.level * 10;
         }
 
-        System.out.println("XP gained is: " + xp);
-
-        if ((this.xpMax - this.xp) > xp) {
-            this.xp += xp;
-        } else {
-            this.xp = xp - (this.xpMax - this.xp);
-            levelUp();
-
+        while (xpIncrease > 0) {
+            int xpToNextLevel = this.xpMax - this.xp;
+            if (xpToNextLevel > xpIncrease) {
+                this.xp += xpIncrease;
+                break;
+            } else {
+                xpIncrease -= xpToNextLevel;
+                levelUp();
+            }
         }
+
         getStats();
     }
 
     private void levelUp() {
         System.out.println(this.name + ": Level up!");
         this.level++;
+        this.xp = 0;
         this.attack += statIncrease();
         this.defense += statIncrease();
 
