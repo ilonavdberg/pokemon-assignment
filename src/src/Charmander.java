@@ -1,9 +1,8 @@
 public class Charmander extends Pokemon {
     private String sound = "Char... Char... Charmander!!";
-    private String type = "fire";
 
     public Charmander() {
-        super("Charmander",12, "berry");
+        super("Charmander", PokeType.FIRE, 12, "berry");
         //base stats
         this.setAttack(10);
         this.setDefense(8);

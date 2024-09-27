@@ -1,4 +1,5 @@
 public abstract class Pokemon {
+    private final PokeType type;
     private String name;
     private int level;
     private int hpMax;
@@ -9,8 +10,9 @@ public abstract class Pokemon {
     private int defense;
     private String food;
 
-    public Pokemon(String name, int xpMax, String food) {
+    public Pokemon(String name, PokeType type, int xpMax, String food) {
         this.name = name;
+        this.type = type;
         this.xpMax = xpMax;
         this.food = food;
         this.level = 1;
@@ -45,7 +47,7 @@ public abstract class Pokemon {
 
     private void fight(Pokemon other) {
         // Calculate damage
-        int damage = Math.max(this.attack - (other.defense / 2), 0) + this.level;
+        int damage = (int) ((Math.max(this.attack - (other.defense / 2), 0) + this.level) * type.getDamageMultiplier(other.type));
         other.hp = Math.max(other.hp - damage, 0);
     }
 

@@ -1,9 +1,8 @@
 public class Squirtle extends Pokemon {
     private String sound = "Squirtle!!!";
-    private String type = "water";
 
     public Squirtle() {
-        super("Squirtle",12, "fish");
+        super("Squirtle", PokeType.WATER, 12, "fish");
         //base stats
         this.setAttack(8);
         this.setDefense(11);

@@ -1,9 +1,8 @@
 public class Pikachu extends Pokemon {
     private String sound = "Pika.. Pika...";
-    private String type = "electric";
 
     public Pikachu() {
-        super("Pikachu",13, "ketchup");
+        super("Pikachu", PokeType.ELECTRIC, 13, "ketchup");
         //base stats
         this.setAttack(9);
         this.setDefense(8);

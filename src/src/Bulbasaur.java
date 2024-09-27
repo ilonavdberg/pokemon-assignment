@@ -1,9 +1,8 @@
 public class Bulbasaur extends Pokemon {
-    private String type = "grass";
     private String sound = "Squirtle!!!";
 
     public Bulbasaur() {
-        super("Bulbasaur",12, "insect");
+        super("Bulbasaur", PokeType.GRASS, 12, "insect");
         //base stats
         this.setAttack(9);
         this.setDefense(11);
