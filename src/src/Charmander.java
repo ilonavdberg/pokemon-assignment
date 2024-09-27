@@ -2,8 +2,11 @@ public class Charmander extends Pokemon {
     String sound = "Char... Char... Charmander!!";
 
     public Charmander() {
-        // all charmanders will start with 12 max hp and 25 max xp
-        super("Charmander",12, 25, 12, 10, "berry");
+        super("Charmander",12, "berry");
+        //base stats
+        this.setAttack(10);
+        this.setDefense(8);
+        this.setHpMax(10);
     }
 
     @Override
