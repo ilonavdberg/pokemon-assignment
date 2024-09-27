@@ -6,9 +6,9 @@ public abstract class Pokemon {
     private int hpMax;
     private int hp;
     private int xpMax;
+    private int xp;
     private int attack;
     private int defense;
-    private int xp;
     private String food;
 
     public Pokemon(String name, int hpMax, int xpMax, int attack, int defence, String food) {
@@ -28,6 +28,8 @@ public abstract class Pokemon {
         System.out.println("Level: " + level);
         System.out.println("HP: " + hp + " / " + hpMax);
         System.out.println("XP: " + xp + " / " + xpMax);
+        System.out.println("Attack: " + attack);
+        System.out.println("Defense: " + defense);
         System.out.println("----------");
     }
 
@@ -73,10 +75,10 @@ public abstract class Pokemon {
     }
 
     private void levelUp() {
-        System.out.println("Level up!");
+        System.out.println(this.name + ": Level up!");
         this.level++;
-        this.attack++;
-        this.defense++;
+        this.attack += statIncrease();
+        this.defense += statIncrease();
 
         this.hpMax = (int) (this.hpMax * 1.2);
         this.xpMax = (int) (this.xpMax * 1.2);
@@ -93,6 +95,15 @@ public abstract class Pokemon {
 
     private void heal() {
         this.hp = hpMax;
+    }
+
+    private int statIncrease() {
+        // 60% chance to increase with 1
+        // 30% chance to increase with 2
+        // 10% chance to increase with 3
+        Integer[]  increases = {1, 1, 1, 1, 1, 1, 2, 2, 2, 3};
+        int index = (int) (Math.random() * increases.length);
+        return increases[index];
     }
 
     public abstract void speaks();
