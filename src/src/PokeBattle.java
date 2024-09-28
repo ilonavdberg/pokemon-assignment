@@ -12,6 +12,15 @@ public class PokeBattle {
     }
 
     public void prepareToFight(Pokemon pokemon1, Pokemon pokemon2) {
+        if (pokemon1.getHp() == 0) {
+            System.out.println(pokemon1.getName() + " is not able to fight...");
+            return;
+        }
+        if (pokemon2.getHp() == 0) {
+            System.out.println(pokemon2.getName() + " is not able to fight...");
+            return;
+        }
+
         if (pokemon1.getSpeed() > pokemon2.getSpeed()) {
             attacker = pokemon1;
             defender = pokemon2;

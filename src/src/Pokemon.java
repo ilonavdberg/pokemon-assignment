@@ -30,7 +30,7 @@ public abstract class Pokemon {
         System.out.println("----------");
     }
 
-    protected void increaseXP(int xpIncrease) {
+    public void increaseXP(int xpIncrease) {
         while (xpIncrease > 0) {
             int xpToNextLevel = this.xpMax - this.xp;
             if (xpToNextLevel > xpIncrease) {
@@ -54,6 +54,15 @@ public abstract class Pokemon {
         this.xpMax = (int) (this.xpMax * 1.2);
     }
 
+    private int statIncrease() {
+        // 60% chance to increase with 1
+        // 30% chance to increase with 2
+        // 10% chance to increase with 3
+        Integer[]  increases = {1, 1, 1, 1, 1, 1, 2, 2, 2, 3};
+        int index = (int) (Math.random() * increases.length);
+        return increases[index];
+    }
+
     public void eats(String food) {
         if (this.food.equals(food.toLowerCase())) {
             speaks();
@@ -68,15 +77,6 @@ public abstract class Pokemon {
     }
 
     public abstract void speaks();
-
-    private int statIncrease() {
-        // 60% chance to increase with 1
-        // 30% chance to increase with 2
-        // 10% chance to increase with 3
-        Integer[]  increases = {1, 1, 1, 1, 1, 1, 2, 2, 2, 3};
-        int index = (int) (Math.random() * increases.length);
-        return increases[index];
-    }
 
     public void setAttack(int attack) {
         this.attack = attack + statIncrease();
