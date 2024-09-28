@@ -7,6 +7,7 @@ public class Charmander extends Pokemon {
         this.setAttack(10);
         this.setDefense(8);
         this.setHpMax(10);
+        this.setSpeed(10);
     }
 
     public void inferno() {

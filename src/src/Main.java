@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class Main {
     public static void main(String[] args) {
         Charmander myCharmander = new Charmander();
@@ -7,24 +5,33 @@ public class Main {
         Squirtle mySquirtle = new Squirtle();
         Bulbasaur myBulbasaur = new Bulbasaur();
 
-        myCharmander.getStats();
-        myPikachu.getStats();
-        mySquirtle.getStats();
-        myBulbasaur.getStats();
+        Pokemon[] myPokemonParty = new Pokemon[4];
+        myPokemonParty[0] = myCharmander;
+        myPokemonParty[1] = myPikachu;
+        myPokemonParty[2] = mySquirtle;
+        myPokemonParty[3] = myBulbasaur;
 
-        mySquirtle.rename("Bubbles");
-        myPikachu.rename("Sparky");
+        for (Pokemon pokemon : myPokemonParty) {
+            pokemon.showStats();
+        }
 
-        Pokemon.battle(myCharmander, myPikachu);
-        Pokemon.battle(mySquirtle, myBulbasaur);
+        new PokeBattle(myBulbasaur, mySquirtle);
+        new PokeBattle(myPikachu, myCharmander);
 
-        myCharmander.eats("berry");
-        myPikachu.eats("berry");
-        myPikachu.eats("ketchup");
-        mySquirtle.eats("fish");
-        myBulbasaur.eats("insect");
+        for (Pokemon pokemon : myPokemonParty) {
+            pokemon.showStats();
+        }
 
-        Pokemon.battle(myCharmander, mySquirtle);
-        Pokemon.battle(myPikachu, myBulbasaur);
+        for (Pokemon pokemon : myPokemonParty) {
+            pokemon.eats(pokemon.getFood());
+        }
+
+        new PokeBattle(myPikachu, mySquirtle);
+        new PokeBattle(myBulbasaur, myCharmander);
+
+        for (Pokemon pokemon : myPokemonParty) {
+            pokemon.showStats();
+        }
+
     }
 }

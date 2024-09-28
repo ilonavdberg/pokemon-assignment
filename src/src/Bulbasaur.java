@@ -5,8 +5,9 @@ public class Bulbasaur extends Pokemon {
         super("Bulbasaur", PokeType.GRASS, 12, "insect");
         //base stats
         this.setAttack(9);
-        this.setDefense(11);
-        this.setHpMax(8);
+        this.setDefense(12);
+        this.setHpMax(10);
+        this.setSpeed(8);
     }
 
     public void leechSeed() {

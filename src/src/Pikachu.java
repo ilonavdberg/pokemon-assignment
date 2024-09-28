@@ -6,7 +6,8 @@ public class Pikachu extends Pokemon {
         //base stats
         this.setAttack(9);
         this.setDefense(8);
-        this.setHpMax(13);
+        this.setHpMax(11);
+        this.setSpeed(11);
     }
 
     public void thunderPunch() {
@@ -20,10 +21,5 @@ public class Pikachu extends Pokemon {
     @Override
     public void speaks() {
         System.out.println(sound);
-    }
-
-    @Override
-    public void rename(String newName) {
-        System.out.println("You cannot rename a pikachu!");
     }
 }

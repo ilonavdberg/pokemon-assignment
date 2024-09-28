@@ -5,8 +5,9 @@ public class Squirtle extends Pokemon {
         super("Squirtle", PokeType.WATER, 12, "fish");
         //base stats
         this.setAttack(8);
-        this.setDefense(11);
+        this.setDefense(12);
         this.setHpMax(10);
+        this.setSpeed(9);
     }
 
     public void hydroPump() {

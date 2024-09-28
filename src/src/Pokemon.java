@@ -8,6 +8,7 @@ public abstract class Pokemon {
     private int xp;
     private int attack;
     private int defense;
+    private int speed;
     private String food;
 
     public Pokemon(String name, PokeType type, int xpMax, String food) {
@@ -19,7 +20,7 @@ public abstract class Pokemon {
         this.xp = 0;
     }
 
-    public void getStats() {
+    public void showStats() {
         System.out.println("Name: " + name);
         System.out.println("Level: " + level);
         System.out.println("HP: " + hp + " / " + hpMax);
@@ -29,29 +30,7 @@ public abstract class Pokemon {
         System.out.println("----------");
     }
 
-    public void rename(String newName) {
-        this.name = newName;
-    }
-
-    public static void battle(Pokemon pokemon1, Pokemon pokemon2) {
-        // Fight
-        while (pokemon1.hp > 0 && pokemon2.hp > 0) {
-            pokemon1.fight(pokemon2);
-            pokemon2.fight(pokemon1);
-        }
-
-        // Increase XP
-        pokemon1.increaseXP(pokemon2);
-        pokemon2.increaseXP(pokemon1);
-    }
-
-    private void fight(Pokemon other) {
-        // Calculate damage
-        int damage = (int) ((Math.max(this.attack - (other.defense / 2), 0) + this.level) * type.getDamageMultiplier(other.type));
-        other.hp = Math.max(other.hp - damage, 0);
-    }
-
-    private void increaseXP(Pokemon opponent) {
+    protected void increaseXP(Pokemon opponent) {
         int xpIncrease;
         // if won
         if (this.hp > 0) {
@@ -59,6 +38,7 @@ public abstract class Pokemon {
         } else {
             xpIncrease = this.level * 10;
         }
+        System.out.println(this.name + " gained " + xpIncrease + "XP");
 
         while (xpIncrease > 0) {
             int xpToNextLevel = this.xpMax - this.xp;
@@ -71,7 +51,7 @@ public abstract class Pokemon {
             }
         }
 
-        getStats();
+        showStats();
     }
 
     private void levelUp() {
@@ -83,15 +63,6 @@ public abstract class Pokemon {
 
         this.hpMax = (int) (this.hpMax * 1.2);
         this.xpMax = (int) (this.xpMax * 1.2);
-    }
-
-    private int statIncrease() {
-        // 60% chance to increase with 1
-        // 30% chance to increase with 2
-        // 10% chance to increase with 3
-        Integer[]  increases = {1, 1, 1, 1, 1, 1, 2, 2, 2, 3};
-        int index = (int) (Math.random() * increases.length);
-        return increases[index];
     }
 
     public void eats(String food) {
@@ -109,6 +80,15 @@ public abstract class Pokemon {
 
     public abstract void speaks();
 
+    private int statIncrease() {
+        // 60% chance to increase with 1
+        // 30% chance to increase with 2
+        // 10% chance to increase with 3
+        Integer[]  increases = {1, 1, 1, 1, 1, 1, 2, 2, 2, 3};
+        int index = (int) (Math.random() * increases.length);
+        return increases[index];
+    }
+
     public void setAttack(int attack) {
         this.attack = attack + statIncrease();
     }
@@ -117,8 +97,54 @@ public abstract class Pokemon {
         this.defense = defense + statIncrease();
     }
 
+    public void setSpeed(int speed) {
+        this.speed = speed + statIncrease();
+    }
+
+    public void reduceHp(int reduction) {
+        this.hp -= reduction;
+        if (this.hp <= 0) { this.hp = 0; }
+    }
+
     public void setHpMax(int hpMax) {
         this.hpMax = hpMax + statIncrease();
         this.hp = this.hpMax;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public PokeType getType() {
+        return this.type;
+    }
+
+    public int getHp() {
+        return this.hp;
+    }
+
+    public int getAttack() {
+        return this.attack;
+    }
+
+    public int getDefense() {
+        return this.defense;
+    }
+
+    public int getSpeed() {
+        return this.speed;
+    }
+
+    public int getLevel() {
+        return this.level;
+    }
+
+    public String getFood() {
+        return this.food;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }
