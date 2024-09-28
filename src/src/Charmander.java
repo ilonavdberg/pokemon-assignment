@@ -3,7 +3,7 @@ public class Charmander extends Pokemon {
 
     public Charmander() {
         super("Charmander", PokeType.FIRE, 12, "berry");
-        //base stats
+        //base stats for each Charmander
         this.setAttack(10);
         this.setDefense(8);
         this.setHpMax(10);

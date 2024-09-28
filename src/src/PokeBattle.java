@@ -5,8 +5,10 @@ public class PokeBattle {
     public PokeBattle(Pokemon pokemon1, Pokemon pokemon2) {
         prepareToFight(pokemon1, pokemon2);
         fight();
-        pokemon1.increaseXP(pokemon2);
-        pokemon2.increaseXP(pokemon1);
+        pokemon1.increaseXP(calculateXp(pokemon1, pokemon2));
+        pokemon2.increaseXP(calculateXp(pokemon2, pokemon1));
+        pokemon1.showStats();
+        pokemon2.showStats();
     }
 
     public void prepareToFight(Pokemon pokemon1, Pokemon pokemon2) {
@@ -46,5 +48,16 @@ public class PokeBattle {
         Pokemon temp = attacker;
         attacker = defender;
         defender = temp;
+    }
+
+    private int calculateXp(Pokemon pokemon, Pokemon opponent) {
+        int xpIncrease;
+        // if won
+        if (pokemon.getHp() > 0) {
+            xpIncrease = (Math.max(opponent.getLevel() - pokemon.getLevel(), 0) + pokemon.getLevel()) * 15;
+        } else {
+            xpIncrease = pokemon.getLevel() * 10;
+        }
+        return xpIncrease;
     }
 }

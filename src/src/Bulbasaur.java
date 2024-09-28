@@ -3,7 +3,7 @@ public class Bulbasaur extends Pokemon {
 
     public Bulbasaur() {
         super("Bulbasaur", PokeType.GRASS, 12, "insect");
-        //base stats
+        //base stats for each Bulbasaur
         this.setAttack(9);
         this.setDefense(12);
         this.setHpMax(10);

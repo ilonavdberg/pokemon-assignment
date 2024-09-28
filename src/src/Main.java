@@ -32,6 +32,5 @@ public class Main {
         for (Pokemon pokemon : myPokemonParty) {
             pokemon.showStats();
         }
-
     }
 }
